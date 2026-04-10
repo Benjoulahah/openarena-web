@@ -224,3 +224,54 @@ footer {
         gap: 15px;
     }
 }
+.admin-section {
+    text-align: center;
+    min-height: 60vh;
+}
+
+.admin-actions {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.admin-btn {
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
+}
+
+.start-btn {
+    background: #1f8b24;
+}
+
+.start-btn:hover {
+    background: #2dbb34;
+    transform: scale(1.05);
+}
+
+.stop-btn {
+    background: #b71c1c;
+}
+
+.stop-btn:hover {
+    background: #e53935;
+    transform: scale(1.05);
+}
+
+.admin-message {
+    margin: 25px auto 0;
+    padding: 15px 20px;
+    width: fit-content;
+    background: #1a1a1a;
+    border: 1px solid #ff1a1a;
+    border-radius: 8px;
+    color: white;
+}

@@ -8,7 +8,7 @@ $maps = require __DIR__ . '/maps.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Open Arena</title>
-    <link rel="stylesheet" href="/Projet S8/assets/styless.css">
+    <link rel="stylesheet" href="/Projet S8/assets/styles.css">
 </head>
 
 <body>
@@ -25,8 +25,8 @@ $maps = require __DIR__ . '/maps.php';
     </div>
         <nav>
             <a href="<?= BASE_URL ?>/?page=admin">Admin</a>
-            <a href="#">Inscription</a>
-            <a href="#">Connexion</a>
+            <a href="<?= BASE_URL ?>/?page=inscription">Inscription</a>
+            <a href="<?= BASE_URL ?>/?page=connexion">Connexion</a>
         </nav>
     </header>
 

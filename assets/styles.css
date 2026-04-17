@@ -275,3 +275,48 @@ footer {
     border-radius: 8px;
     color: white;
 }
+
+/* INSCRIPTION */
+
+.form-container {
+    max-width: 400px;
+    margin: 80px auto;
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #ff1a1a;
+    text-align: center;
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+    color: #ff1a1a;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-container button {
+    width: 100%;
+    padding: 12px;
+    background: #660000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background: #ff1a1a;
+}
+
+.form-container a {
+    color: #ff1a1a;
+    text-decoration: none;
+}

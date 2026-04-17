@@ -7,6 +7,10 @@ switch ($page) {
         require_once __DIR__ . '/../app/admin.php';
         break;
 
+    case 'inscription':
+        require_once __DIR__ . '/../app/inscription.php';
+        break;
+
     case 'home':
     default:
         require_once __DIR__ . '/../app/home.php';

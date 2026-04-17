@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Open Arena</title>
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/styless.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/styles.css">
 </head>
 <body>
 
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <section class="section admin-section">
     <h2>Panneau d'administration</h2>
-    <p>Gérez ici l’état du serveur de jeu.</p>
+    <p>Gérez ici l'état du serveur de jeu.</p>
 
     <?php if (!empty($message)): ?>
         <div class="admin-message">

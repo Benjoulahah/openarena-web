@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <nav>
         <a href="<?= BASE_URL ?>/?page=home">Accueil</a>
-        <a href="#">Connexion</a>
+        <a href="<?= BASE_URL ?>/?page=connexion">Connexion</a>
     </nav>
 </header>
 

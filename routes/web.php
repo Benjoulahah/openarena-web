@@ -10,6 +10,9 @@ switch ($page) {
     case 'inscription':
         require_once __DIR__ . '/../app/inscription.php';
         break;
+    case 'connexion':
+        require_once __DIR__ . '/../app/connexion.php';
+        break;
 
     case 'home':
     default:

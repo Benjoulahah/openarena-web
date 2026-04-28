@@ -320,3 +320,47 @@ footer {
     color: #ff1a1a;
     text-decoration: none;
 }
+/* CONNEXION */
+
+.login-container {
+    max-width: 400px;
+    margin: 80px auto;
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #ff1a1a;
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #ff1a1a;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 12px;
+    background: #660000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-container button:hover {
+    background: #ff1a1a;
+}
+
+.login-container a {
+    color: #ff1a1a;
+    text-decoration: none;
+}

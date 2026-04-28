@@ -19,13 +19,13 @@
             </div>
         </div>
         <nav>
-            <a href="index.php">Accueil</a>
-            <a href="admin.php">Admin</a>
-            <a href="connexion.php">Connexion</a>
+            <a href="<?= BASE_URL ?>/?page=accueil">Accueil</a>
+            <a href="<?= BASE_URL ?>/?page=admin">Admin</a>
+            <a href="<?= BASE_URL ?>/?page=connexion">Connexion</a>
         </nav>
     </header>
 
-    <!-- FORMULAIRE INSCRIPTION -->
+    
     <div class="form-container">
         <h2>Créer un compte</h2>
 
@@ -64,7 +64,7 @@
         </form>
 
         <div class="login-link">
-            <p>Déjà un compte ? <a href="connexion.php">Se connecter</a></p>
+            <p>Déjà un compte ? <a href="<?= BASE_URL ?>/?page=connexion">Se connecter</a></p>
         </div>
     </div>
 

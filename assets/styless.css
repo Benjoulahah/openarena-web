@@ -320,47 +320,167 @@ footer {
     color: #ff1a1a;
     text-decoration: none;
 }
+
 /* CONNEXION */
 
-.login-container {
+.login-page {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.login-box {
+    width: 100%;
     max-width: 400px;
-    margin: 80px auto;
     background: #1a1a1a;
-    padding: 25px;
+    padding: 30px;
     border-radius: 10px;
     border: 1px solid #ff1a1a;
     text-align: center;
 }
 
-.login-container h2 {
-    margin-bottom: 20px;
+.login-box h1 {
+    margin-bottom: 25px;
     color: #ff1a1a;
+    font-size: 32px;
 }
 
-.login-container input {
+.form-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: white;
+    font-size: 15px;
+}
+
+.form-group input {
     width: 100%;
-    padding: 10px;
-    margin: 8px 0;
+    padding: 12px;
     border: none;
     border-radius: 5px;
     box-sizing: border-box;
+    font-size: 15px;
 }
 
-.login-container button {
+.login-btn {
     width: 100%;
     padding: 12px;
+    margin-top: 10px;
     background: #660000;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-.login-container button:hover {
+.login-btn:hover {
     background: #ff1a1a;
+    transform: scale(1.02);
 }
 
-.login-container a {
+.register-link {
+    margin-top: 20px;
+    color: white;
+}
+
+.register-link a {
     color: #ff1a1a;
     text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+.tournament-btn {
+    background: #333;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.tournament-btn:hover {
+    background: #ff1a1a;
+    transform: scale(1.05);
+}
+.joueur-checkbox {
+    text-align: left;
+    background: #111;
+    padding: 8px;
+    border-radius: 5px;
+    margin: 8px 0;
+}
+
+.joueur-checkbox input {
+    width: auto;
+    margin-right: 8px;
+}
+.player-select-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.player-select-row select {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.small-btn {
+    width: auto;
+    padding: 10px 15px;
+}
+
+.selected-players {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 20px;
+    min-height: 50px;
+}
+
+.selected-player-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1a1a1a;
+    border: 1px solid #ff1a1a;
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin-bottom: 8px;
+}
+
+.selected-player-line span {
+    color: white;
+    font-size: 14px;
+}
+
+.selected-player-line button {
+    background: #b71c1c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.selected-player-line button:hover {
+    background: #e53935;
+}
+
+.empty-message {
+    color: #aaa;
+    font-size: 14px;
+    margin: 5px 0;
 }

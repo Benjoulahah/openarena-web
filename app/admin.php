@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Open Arena</title>
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/styles.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/styless.css">
 </head>
 <body>
 
@@ -59,6 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 Fermer le serveur
             </button>
         </form>
+        <a href="<?= BASE_URL ?>/?page=admin_tournoi" class="admin-btn tournament-btn">
+        Gérer les tournois
+    </a>
     </div>
 </section>
 

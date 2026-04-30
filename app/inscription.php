@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription - Open Arena</title>
-    <link rel="stylesheet" href="/Projet S8/assets/styles.css">
+    <link rel="stylesheet" href="/Projet S8/assets/styless.css">
 </head>
 <body>
 
@@ -29,7 +29,7 @@
     <div class="form-container">
         <h2>Créer un compte</h2>
 
-        <form action="traitement_inscription.php" method="POST">
+        <form action="<?= BASE_URL ?>/?page=traitement_inscription" method="POST">
             <div class="form-group">
                 <label for="nom">Nom</label>
                 <input type="text" id="nom" name="nom" required>

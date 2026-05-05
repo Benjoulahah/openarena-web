@@ -23,7 +23,6 @@
 
         <nav>
             <a href="index.php">Accueil</a>
-            <a href="<?= BASE_URL ?>/?page=admin">Admin</a>
             <a href="<?= BASE_URL ?>/?page=inscription">Inscription</a>
             <a href="<?= BASE_URL ?>/?page=connexion">Connexion</a>
         </nav>
@@ -35,11 +34,10 @@
         <div class="login-box">
             <h1>Connexion</h1>
 
-            <form action="traitement_connexion.php" method="post">
-
+            <form action="<?= BASE_URL ?>/?page=traitement_connexion" method="post">
                 <div class="form-group">
-                    <label for="email">Adresse email</label>
-                    <input type="email" id="email" name="email" placeholder="Entrez votre email" required>
+                    <label for="pseudo">Pseudo</label>
+                    <input type="text" id="pseudo" name="pseudo" placeholder="Entrez votre pseudo" required>
                 </div>
 
                 <div class="form-group">

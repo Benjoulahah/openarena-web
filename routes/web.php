@@ -16,8 +16,8 @@ switch ($page) {
     case 'tournoi':
         require_once __DIR__ . '/../app/tournoi.php';
         break;
-    case 'admin_tournoi':
-        require_once __DIR__ . '/../app/admin_tournoi.php';
+    case 'creation_tournoi':
+        require_once __DIR__ . '/../app/creation_tournoi.php';
         break;
     case 'traitement_inscription':
         require_once __DIR__ . '/../app/traitement_inscription.php';
@@ -28,6 +28,37 @@ switch ($page) {
 
     case 'traitement_creation_tournoi':
         require_once __DIR__ . '/../app/traitement_creation_tournoi.php';
+        break;
+    case 'traitement_connexion':
+        require_once __DIR__ . '/../app/traitement_connexion.php';
+        break;
+    case 'tournois_en_cours':
+    require_once __DIR__ . '/../app/tournois_en_cours.php';
+    break;
+
+    case 'gestion_tournoi':
+        require_once __DIR__ . '/../app/gestion_tournoi.php';
+        break;
+    
+    case 'creer_round_swiss':
+        require_once __DIR__ . '/../app/creer_round_swiss.php';
+        break;
+    case 'matchs_tournoi':
+        require_once __DIR__ . '/../app/matchs_tournoi.php';
+        break;
+    case 'traitement_scores_swiss':
+        require_once __DIR__ . '/../app/traitement_scores_swiss.php';
+        break;
+    case 'creer_bracket_final':
+        require_once __DIR__ . '/../app/creer_bracket_final.php';
+        break;
+
+    case 'bracket_final':
+        require_once __DIR__ . '/../app/bracket_final.php';
+        break;
+
+    case 'traitement_scores_final':
+        require_once __DIR__ . '/../app/traitement_scores_final.php';
         break;
 
     case 'home':

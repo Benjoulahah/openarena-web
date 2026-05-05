@@ -24,7 +24,6 @@ $maps = require __DIR__ . '/maps.php';
         </div>
     </div>
         <nav>
-            <a href="<?= BASE_URL ?>/?page=admin">Admin</a>
             <a href="<?= BASE_URL ?>/?page=tournoi">Tournoi</a>
             <a href="<?= BASE_URL ?>/?page=inscription">Inscription</a>
             <a href="<?= BASE_URL ?>/?page=connexion">Connexion</a>

@@ -1,4 +1,16 @@
 <?php
+session_start();
+
+if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] !== true) {
+    header("Location: " . BASE_URL . "/?page=connexion");
+    exit();
+}
+
+if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "admin") {
+    header("Location: " . BASE_URL . "/?page=home");
+    exit();
+}
+
 $message = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -39,7 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <section class="section admin-section">
     <h2>Panneau d'administration</h2>
-    <p>Gérez ici l'état du serveur de jeu.</p>
 
     <?php if (!empty($message)): ?>
         <div class="admin-message">
@@ -59,9 +70,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 Fermer le serveur
             </button>
         </form>
-        <a href="<?= BASE_URL ?>/?page=admin_tournoi" class="admin-btn tournament-btn">
-        Gérer les tournois
-    </a>
+        <a href="<?= BASE_URL ?>/?page=tournois_en_cours" class="admin-btn tournament-btn">
+        Tournois en cours
+        </a>
+        <a href="<?= BASE_URL ?>/?page=creation_tournoi" class="admin-btn tournament-btn">
+        Création des tournois
+        </a>
     </div>
 </section>
 

@@ -3,7 +3,7 @@
 require_once __DIR__ . "/../config/database.php";
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    header("Location: " . BASE_URL . "/?page=admin_tournoi");
+    header("Location: " . BASE_URL . "/?page=creation_tournoi");
     exit();
 }
 

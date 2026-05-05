@@ -20,7 +20,6 @@
         </div>
         <nav>
             <a href="<?= BASE_URL ?>/?page=accueil">Accueil</a>
-            <a href="<?= BASE_URL ?>/?page=admin">Admin</a>
             <a href="<?= BASE_URL ?>/?page=connexion">Connexion</a>
         </nav>
     </header>

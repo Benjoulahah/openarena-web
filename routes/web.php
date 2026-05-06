@@ -60,6 +60,10 @@ switch ($page) {
     case 'traitement_scores_final':
         require_once __DIR__ . '/../app/traitement_scores_final.php';
         break;
+        
+    case 'traitement_lancement_match':
+        require_once __DIR__ . '/../app/traitement_lancement_match.php';
+        break;
 
     case 'home':
     default:

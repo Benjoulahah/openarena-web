@@ -15,10 +15,12 @@ $message = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['start_server'])) {
+        shell_exec('sudo /bin/systemctl restart openarena');
         $message = "Le serveur a été lancé.";
     }
 
     if (isset($_POST['stop_server'])) {
+        shell_exec('sudo /bin/systemctl stop openarena');
         $message = "Le serveur a été arrêté.";
     }
 }

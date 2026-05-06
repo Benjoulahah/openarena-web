@@ -133,6 +133,17 @@ $matchs_non_termines = $stmt->fetchColumn();
                                 En attente
                             <?php endif; ?>
                         </p>
+                        <?php if ($match["termine"] == 0): ?>
+                            <form action="<?= BASE_URL ?>/?page=traitement_lancement_match" method="post" style="margin-top: 10px;">
+                                <input type="hidden" name="id_match" value="<?= $match["id_match"] ?>">
+                                <input type="hidden" name="id_tournoi" value="<?= $id_tournoi ?>">
+                                <input type="hidden" name="pseudo_1" value="<?= htmlspecialchars($match["pseudo_1"]) ?>">
+                                <input type="hidden" name="pseudo_2" value="<?= htmlspecialchars($match["pseudo_2"]) ?>">
+                                <button type="submit" class="admin-btn start-btn" style="width: 100%;">
+                                Lancer le match
+                                </button>
+                            </form>
+                        <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
             </div>

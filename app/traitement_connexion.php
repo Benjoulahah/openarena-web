@@ -39,7 +39,7 @@ if ($utilisateur["role"] == "admin") {
     header("Location: " . BASE_URL . "/?page=admin");
     exit();
 } else {
-    header("Location: " . BASE_URL . "/?page=home");
+    header("Location: " . BASE_URL . "/?page=compte_utilisateur");
     exit();
 }
 

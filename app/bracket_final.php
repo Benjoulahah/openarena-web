@@ -80,7 +80,7 @@ function nomRoundFinal($nb_matchs) {
 <head>
     <meta charset="UTF-8">
     <title>Phase finale - Open Arena</title>
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/styless.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/styles.css">
 </head>
 <body>
 

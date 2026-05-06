@@ -64,12 +64,16 @@ try {
 
         /* Enregistrer le score du match */
         $sql = "
-            UPDATE matchs
-            SET score_1 = ?, score_2 = ?, termine = 1
-            WHERE id_match = ?
-        ";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute(array($score_1, $score_2, $id_match));
+    UPDATE matchs
+        SET 
+         score_1 = ?,
+         score_2 = ?,
+         gagnant_participation_id = ?,
+         termine = 1
+        WHERE id_match = ?
+    ";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array($score_1, $score_2, $id_gagnant, $id_match));
 
         /* Ajouter victoire au gagnant */
         $sql = "

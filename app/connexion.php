@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion - Open Arena</title>
-    <link rel="stylesheet" href="/Projet S8/assets/styless.css">
+    <link rel="stylesheet" href="/Projet S8/assets/styles.css">
 </head>
 
 <body>

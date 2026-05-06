@@ -64,7 +64,7 @@ $matchs_non_termines = $stmt->fetchColumn();
 <head>
     <meta charset="UTF-8">
     <title>Matchs du tournoi - Open Arena</title>
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/styless.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/styles.css">
 </head>
 <body>
 

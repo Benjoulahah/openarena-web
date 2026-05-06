@@ -54,7 +54,7 @@ $nombre_matchs = $stmt->fetchColumn();
 <head>
     <meta charset="UTF-8">
     <title>Gestion tournoi - Open Arena</title>
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/styless.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/styles.css">
 </head>
 <body>
 
@@ -124,11 +124,25 @@ $nombre_matchs = $stmt->fetchColumn();
                 Voir les matchs
             </a>
         <?php endif; ?>
-        <div style="text-align:center; margin-top:30px;">
-            <a href="<?= BASE_URL ?>/?page=creer_bracket_final&id_tournoi=<?= $id_tournoi ?>" class="admin-btn start-btn">
-                Créer la phase finale
-            </a>
-        </div>
+        <?php if ($tournoi["phase"] == "swiss_termine"): ?>
+            <div style="text-align:center; margin-top:30px;">
+                <a href="<?= BASE_URL ?>/?page=creer_bracket_final&id_tournoi=<?= $id_tournoi ?>" class="admin-btn start-btn">
+                    Créer la phase finale
+                </a>
+            </div>
+        <?php elseif ($tournoi["phase"] == "finale"): ?>
+            <div style="text-align:center; margin-top:30px;">
+                <a href="<?= BASE_URL ?>/?page=bracket_final&id_tournoi=<?= $id_tournoi ?>" class="admin-btn start-btn">
+                    Voir la phase finale
+                </a>
+            </div>
+        <?php elseif ($tournoi["phase"] == "termine"): ?>
+            <div style="text-align:center; margin-top:30px;">
+                <a href="<?= BASE_URL ?>/?page=classement_tournoi&id_tournoi=<?= $id_tournoi ?>" class="admin-btn start-btn">
+                    Voir le classement final
+                </a>
+            </div>
+        <?php endif; ?>
     </div>
 
 </section>

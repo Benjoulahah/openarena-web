@@ -73,6 +73,22 @@ try {
         $stmt = $pdo->prepare($sql);
         $stmt->execute(array($id_gagnant, $id_match));
 
+        $sql = "
+            UPDATE participations
+            SET victoires = victoires + 1
+            WHERE id_participation = ?
+        ";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(array($id_gagnant));
+
+        $sql = "
+            UPDATE participations
+            SET defaites = defaites + 1
+            WHERE id_participation = ?
+        ";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(array($id_perdant));
+
         /*
             Stats globales simples pour la phase finale.
             Ici on ajoute seulement victoire / défaite globale.
@@ -152,7 +168,13 @@ try {
             $gagnants_round = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             if (count($gagnants_round) == 1) {
-                $sql = "UPDATE tournois SET phase = 'termine' WHERE id_tournoi = ?";
+                $sql = "
+                    UPDATE tournois
+                    SET 
+                        phase = 'termine',
+                        date_fin = NOW()
+                    WHERE id_tournoi = ?
+                ";
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute(array($id_tournoi));
                 continue;

@@ -12,7 +12,7 @@ $utilisateurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Créer un tournoi - Open Arena</title>
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/styless.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/styles.css">
 </head>
 <body>
 
@@ -27,7 +27,7 @@ $utilisateurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <nav>
         <a href="<?= BASE_URL ?>/index.php">Accueil</a>
         <a href="<?= BASE_URL ?>/?page=admin">Admin</a>
-        <a href="<?= BASE_URL ?>/?page=connexion">Connexion</a>
+        <a href="<?= BASE_URL ?>/?page=connexion">Deconnexion</a>
     </nav>
 </header>
 

@@ -60,6 +60,26 @@ switch ($page) {
     case 'traitement_scores_final':
         require_once __DIR__ . '/../app/traitement_scores_final.php';
         break;
+    
+    case 'classement_tournoi':
+        require_once __DIR__ . '/../app/classement_tournoi.php';
+        break;
+
+    case 'compte_utilisateur':
+        require_once __DIR__ . '/../app/compte_utilisateur.php';
+        break;
+
+    case 'parametres_compte':
+        require_once __DIR__ . '/../app/parametres_compte.php';
+        break;
+    
+    case 'tournois_archives':
+    require_once __DIR__ . '/../app/tournois_archives.php';
+    break;
+    
+    case 'tournoi':
+    require_once __DIR__ . '/../app/tournoi.php';
+    break;
 
     case 'home':
     default:

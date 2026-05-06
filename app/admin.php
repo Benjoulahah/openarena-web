@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Open Arena</title>
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/styless.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/styles.css">
 </head>
 <body>
 
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <nav>
         <a href="<?= BASE_URL ?>/?page=home">Accueil</a>
-        <a href="<?= BASE_URL ?>/?page=connexion">Connexion</a>
+        <a href="<?= BASE_URL ?>/?page=connexion">Deconnexion</a>
     </nav>
 </header>
 
@@ -75,6 +75,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </a>
         <a href="<?= BASE_URL ?>/?page=creation_tournoi" class="admin-btn tournament-btn">
         Création des tournois
+        </a>
+        <a href="<?= BASE_URL ?>/?page=tournois_archives" class="admin-btn tournament-btn">
+        Tournois archivés
         </a>
     </div>
 </section>

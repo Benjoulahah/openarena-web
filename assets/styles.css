@@ -577,3 +577,115 @@ footer {
     color: #ff1a1a;
     margin-bottom: 20px;
 }
+/* ============================= */
+/* COMPTE UTILISATEUR / PARAMETRES */
+/* ============================= */
+
+.compte-section {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+.compte-grid {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.compte-card {
+    background: #1a1a1a;
+    border: 1px solid #ff1a1a;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-sizing: border-box;
+    flex: 1;
+    min-width: 300px;
+}
+
+.compte-card h3 {
+    color: #ff1a1a;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.full-card {
+    width: 100%;
+}
+
+.compte-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+}
+
+.compte-table th {
+    background: #660000;
+    padding: 12px;
+    border-bottom: 2px solid #ff1a1a;
+}
+
+.compte-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+}
+
+.compte-table tr:hover {
+    background: #2a0000;
+}
+
+.success-message,
+.error-message {
+    width: fit-content;
+    max-width: 80%;
+    margin: 20px auto;
+    padding: 15px 25px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.success-message {
+    background: #1f8b24;
+}
+
+.error-message {
+    background: #b71c1c;
+}
+
+.parametres-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.touches-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.touches-grid input,
+.parametres-form input {
+    background: #111;
+    color: white;
+    border: 1px solid #ff1a1a;
+}
+
+.touches-form {
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .touches-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .touches-grid {
+        grid-template-columns: 1fr;
+    }
+}

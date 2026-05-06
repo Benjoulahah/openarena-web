@@ -18,6 +18,10 @@ if (!$tournoi) {
     die("Tournoi introuvable.");
 }
 
+if ($tournoi["phase"] != "swiss_termine") {
+    die("La phase Swiss n'est pas encore terminée.");
+}
+
 /* Vérifier si un bracket existe déjà */
 $sql = "
     SELECT COUNT(*)

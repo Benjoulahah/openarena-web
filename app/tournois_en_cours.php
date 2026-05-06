@@ -13,7 +13,12 @@ if (!isset($_SESSION["role"]) || $_SESSION["role"] !== "admin") {
 
 require_once __DIR__ . "/../config/database.php";
 
-$sql = "SELECT * FROM tournois ORDER BY id_tournoi DESC";
+$sql = "
+    SELECT *
+    FROM tournois
+    WHERE phase != 'termine'
+    ORDER BY id_tournoi DESC
+";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $tournois = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -24,7 +29,7 @@ $tournois = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Tournois en cours - Open Arena</title>
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/styless.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/styles.css">
 </head>
 <body>
 

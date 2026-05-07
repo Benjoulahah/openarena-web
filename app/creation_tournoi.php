@@ -1,7 +1,15 @@
 <?php
 require_once __DIR__ . "/../config/database.php";
 
-$sql = "SELECT id_utilisateur, pseudo, nom, prenom FROM utilisateurs ORDER BY pseudo ASC";
+$sql = "
+    SELECT 
+    id_utilisateur, 
+    pseudo, 
+    nom, 
+    prenom 
+FROM utilisateurs 
+ORDER BY pseudo ASC";
+
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $utilisateurs = $stmt->fetchAll(PDO::FETCH_ASSOC);

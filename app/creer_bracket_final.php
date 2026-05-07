@@ -65,7 +65,7 @@ if ($nb_qualifies < 2) {
 }
 
 /*
-    Choisir la taille du bracket.
+    Choisi la taille du bracket.
     16 joueurs = huitièmes
     8 joueurs = quarts
     4 joueurs = demies
@@ -89,10 +89,6 @@ try {
 
     /*
         Création des matchs du premier tour.
-        Pairing simple :
-        1er vs dernier
-        2e vs avant-dernier
-        etc.
     */
     $round_final = 1;
 

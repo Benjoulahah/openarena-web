@@ -8,7 +8,11 @@ if ($id_tournoi <= 0) {
     die("Tournoi invalide.");
 }
 
-$sql = "SELECT * FROM tournois WHERE id_tournoi = ?";
+$sql = "
+SELECT * 
+FROM tournois 
+WHERE id_tournoi = ?
+";
 $stmt = $pdo->prepare($sql);
 $stmt->execute(array($id_tournoi));
 $tournoi = $stmt->fetch(PDO::FETCH_ASSOC);

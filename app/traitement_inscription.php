@@ -27,7 +27,12 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 // Vérifier si le pseudo ou l'email existe déjà
-$sql = "SELECT id_utilisateur FROM utilisateurs WHERE pseudo = ? OR email = ?";
+$sql = "
+SELECT 
+id_utilisateur 
+FROM utilisateurs 
+WHERE pseudo = ? OR email = ?
+";
 $stmt = $pdo->prepare($sql);
 $stmt->execute(array($pseudo, $email));
 

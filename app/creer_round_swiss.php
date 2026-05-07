@@ -35,7 +35,7 @@ if (!$tournoi) {
     die("Tournoi introuvable.");
 }
 
-/* Sécurité : mettre à jour les statuts */
+/* Mettre à jour les statuts */
 $sql = "
     UPDATE participations
     SET qualifie = 1

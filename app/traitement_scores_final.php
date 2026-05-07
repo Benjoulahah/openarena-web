@@ -170,9 +170,7 @@ try {
             if (count($gagnants_round) == 1) {
                 $sql = "
                     UPDATE tournois
-                    SET 
-                        phase = 'termine',
-                        date_fin = NOW()
+                    SET phase = 'termine'
                     WHERE id_tournoi = ?
                 ";
                 $stmt = $pdo->prepare($sql);

@@ -29,20 +29,6 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $tournois_termines = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-function afficherPhase($phase) {
-    if ($phase == "swiss") {
-        return "Phase Swiss";
-    } elseif ($phase == "swiss_termine") {
-        return "Swiss terminé";
-    } elseif ($phase == "finale") {
-        return "Phase finale";
-    } elseif ($phase == "termine") {
-        return "Terminé";
-    }
-
-    return $phase;
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -118,7 +104,7 @@ function afficherPhase($phase) {
                                 <?php endif; ?>
                             </td>
 
-                            <td><?= htmlspecialchars(afficherPhase($tournoi["phase"])) ?></td>
+                            <td>Terminé</td>
 
                             <td>
                                 <?php if (isset($tournoi["date_creation"]) && !empty($tournoi["date_creation"])): ?>
@@ -173,7 +159,7 @@ function afficherPhase($phase) {
                                 <?php endif; ?>
                             </td>
 
-                            <td><?= htmlspecialchars(afficherPhase($tournoi["phase"])) ?></td>
+                            <td>Terminé</td>
 
                             <td>
                                 <?php if (isset($tournoi["date_creation"]) && !empty($tournoi["date_creation"])): ?>

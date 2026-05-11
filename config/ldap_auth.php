@@ -3,8 +3,8 @@ require_once 'ad.php';
 
 function connect_ad() {
     $ad = ldap_connect(AD_HOST);
-    ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3);
-    ldap_set_option($ds, LDAP_OPT_REFERRALS, 0);
+    ldap_set_option($ad, LDAP_OPT_PROTOCOL_VERSION, 3);
+    ldap_set_option($ad, LDAP_OPT_REFERRALS, 0);
     return $ad;
 }
 

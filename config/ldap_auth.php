@@ -2,10 +2,19 @@
 require_once 'ad.php';
 
 function connect_ad() {
-    $ad = ldap_connect(AD_HOST);
-    ldap_set_option($ad, LDAP_OPT_PROTOCOL_VERSION, 3);
-    ldap_set_option($ad, LDAP_OPT_REFERRALS, 0);
-    return $ad;
+    $ad = null;
+    foreach (AD_HOSTS as $host) {
+        $ad = ldap_connect($host);   
+        if ($ad) {
+            ldap_set_option($ad, LDAP_OPT_PROTOCOL_VERSION, 3);
+            ldap_set_option($ad, LDAP_OPT_REFERRALS, 0);
+            ldap_set_option($ad, LDAP_OPT_NETWORK_TIMEOUT, 2); 
+            if (@ldap_bind($ad)) { 
+                return $ad;
+            }
+        }
+    }
+    return false; 
 }
 
 function create_user($username, $password) {

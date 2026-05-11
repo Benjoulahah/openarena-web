@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . "/../config/database.php";
+require_once __DIR__ . "/envoyer_mail_tournoi.php";
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: " . BASE_URL . "/?page=creation_tournoi");
@@ -55,7 +56,44 @@ try {
             $stmt->execute(array($id_tournoi, $id_utilisateur));
         }
     }
+     // Recover selected players' email addresses
+    $placeholders = implode(",", array_fill(0, count($joueurs), "?"));
 
+    $sql = "
+        SELECT 
+            pseudo,
+            email,
+            email_open_arena,
+            mail_open_arena_cree
+        FROM utilisateurs
+        WHERE id_utilisateur IN ($placeholders)
+    ";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($joueurs);
+
+    $joueurs_mails = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Send one notification email to each selected player
+    foreach ($joueurs_mails as $joueur) {
+
+        if (
+            $joueur["mail_open_arena_cree"] == 1 &&
+            !empty($joueur["email_open_arena"])
+        ) {
+            $destinataire = $joueur["email_open_arena"];
+        } else {
+            $destinataire = $joueur["email"];
+        }
+
+        if (!empty($destinataire)) {
+            envoyerMailTournoi(
+                $destinataire,
+                $joueur["pseudo"],
+                $nom_tournoi
+            );
+        }
+    }
     $pdo->commit();
 
     header("Location: " . BASE_URL . "/?page=admin");

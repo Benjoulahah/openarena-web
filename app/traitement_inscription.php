@@ -45,7 +45,7 @@ if ($utilisateur_existant) {
 
 if (!create_user($pseudo, $mdp)) {
     $ad_link = connect_ad();
-    ldap_bind($ad_link, AD_ADMIN,AD_PASSWD);
+    ldap_bind($ad_link, AD_ADMIN,AD_PASS);
     die("Erreur de connexion" . ldap_error($ad_link));
 }
 

@@ -2,8 +2,8 @@
 
 $host = "localhost";
 $dbname = "openarena";
-$username = "root";
-$password = "root";
+$username = "admin";
+$password = "admin";
 
 try {
     $pdo = new PDO(

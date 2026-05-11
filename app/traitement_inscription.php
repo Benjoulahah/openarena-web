@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . "/../config/database.php";
+require_once __DIR__ . "/../config/ldap_auth.php";
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: " . BASE_URL . "/?page=inscription");
@@ -47,6 +48,12 @@ $utilisateur_existant = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($utilisateur_existant) {
     die("Erreur : ce pseudo ou cette adresse email existe déjà.");
+}
+
+if (!create_user($pseudo, $mdp)) {
+    $ad_link = connect_ad();
+    ldap_bind($ad_link, AD_ADMIN,AD_PASS);
+    die("Erreur de connexion" . ldap_error($ad_link));
 }
 
 // Sécurisation du mot de passe

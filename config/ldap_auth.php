@@ -10,7 +10,7 @@ function connect_ad() {
 
 function create_user($username, $password) {
     $ad = connect_ad();
-    if (ldap_bind($ds, AD_ADMIN, AD_PASS)) {
+    if (ldap_bind($ad, AD_ADMIN, AD_PASS)) {
         $dn = "CN=$username," . USER_OU;
         $newPassword = mb_convert_encoding("\"$password\"", "UTF-16LE");
         

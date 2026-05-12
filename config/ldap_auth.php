@@ -1,4 +1,7 @@
 <?php
+
+putenv('LDAPTLS_REQCERT=never');
+
 require_once 'ad.php';
 
 function connect_ad() {

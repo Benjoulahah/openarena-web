@@ -20,6 +20,21 @@ function connect_ad() {
     return false; 
 }
 
+
+function is_admin($ad, $userDN) {
+    $groupDN = "CN=Admins_jeux,OU=admins,OU=rouen,DC=openarena,DC=local";
+    $filter = "(memberOf=$groupDN)";
+    $search = ldap_read($ad, $userDN, $filter, array("cn"));
+    
+    if ($search) {
+        $result = ldap_get_entries($ad, $search);
+        return ($result["count"] > 0);
+    }
+    
+    return false;
+}
+
+
 function create_user($username, $password) {
     $ad = connect_ad();
     if (ldap_bind($ad, AD_ADMIN, AD_PASS)) {

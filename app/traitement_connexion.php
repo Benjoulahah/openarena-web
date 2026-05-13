@@ -31,7 +31,7 @@ if (!password_verify($password, $utilisateur["mot_de_passe"])) {
     die("Erreur : mot de passe incorrect.");
 }
 
-$ad_link = connect_ad();
+/*$ad_link = connect_ad();
 if (!$ad_link) {
     die("Impossible de contacter le serveur Active Directory.");
 }
@@ -57,7 +57,7 @@ if (is_admin($ad_link, $userDN)) {
     $_SESSION["role"] = "joueur";
 }
 
-ldap_close($ad_link);
+ldap_close($ad_link);*/
 
 $_SESSION["connecte"] = true;
 $_SESSION["id_utilisateur"] = $utilisateur["id_utilisateur"];

@@ -76,25 +76,27 @@ try {
 
     foreach ($joueurs_mails as $joueur) {
 
-        if (!empty($joueur["email"])) {
-            envoyerMailPersonnel(
-                $joueur["email"],
-                $joueur["pseudo"],
-                $nom_tournoi
-            );
-        }
-
-        if (
-            $joueur["mail_open_arena_cree"] == 1 &&
-            !empty($joueur["email_open_arena"])
-        ) {
-            envoyerMailOpenArena(
-                $joueur["email_open_arena"],
-                $joueur["pseudo"],
-                $nom_tournoi
-            );
-        }
+    // Envoi vers le mail personnel
+    if (!empty($joueur["email"])) {
+        envoyerMailPersonnel(
+            $joueur["email"],
+            $joueur["pseudo"],
+            $nom_tournoi
+        );
     }
+
+    // Envoi vers le mail Open Arena local
+    if (
+        $joueur["mail_open_arena_cree"] == 1 &&
+        !empty($joueur["email_open_arena"])
+    ) {
+        envoyerMailOpenArena(
+            $joueur["email_open_arena"],
+            $joueur["pseudo"],
+            $nom_tournoi
+        );
+    }
+}
     $pdo->commit();
 
     header("Location: " . BASE_URL . "/?page=admin");

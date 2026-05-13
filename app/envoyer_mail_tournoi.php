@@ -7,7 +7,7 @@ require_once __DIR__ . "/../lib/PHPMailer/src/Exception.php";
 require_once __DIR__ . "/../lib/PHPMailer/src/PHPMailer.php";
 require_once __DIR__ . "/../lib/PHPMailer/src/SMTP.php";
 
-function creerContenuMailTournoi($pseudo, $nom_tournoi)
+function contenuMailTournoi($pseudo, $nom_tournoi)
 {
     $pseudo_propre = htmlspecialchars($pseudo, ENT_QUOTES, "UTF-8");
     $nom_tournoi_propre = htmlspecialchars($nom_tournoi, ENT_QUOTES, "UTF-8");
@@ -33,28 +33,28 @@ function envoyerMailPersonnel($destinataire, $pseudo, $nom_tournoi)
         $mail->Host = "smtp.gmail.com";
         $mail->SMTPAuth = true;
 
+        // Gmail sender account
         $mail->Username = "palfraybenjamin43@gmail.com";
         $mail->Password = "nnql lidj odqi odpo";
 
+        // Port 465 is often more stable than 587 with Gmail
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port = 465;
-        $mail->Timeout = 10;
 
-        // Sender
-        $mail->setFrom("palfraybenjamin43@gmail.com", "Open Arena Rouen");
+        // Important: avoid blocking the tournament creation for too long
+        $mail->Timeout = 5;
+        $mail->SMTPKeepAlive = false;
 
-        // Receiver
+        $mail->setFrom("TON_ADRESSE_GMAIL@gmail.com", "Open Arena Rouen");
         $mail->addAddress($destinataire, $pseudo);
 
-        // Email content
         $mail->isHTML(true);
         $mail->CharSet = "UTF-8";
         $mail->Subject = "Nouveau tournoi Open Arena Rouen";
-        $mail->Body = creerContenuMailTournoi($pseudo, $nom_tournoi);
-        $mail->AltBody = "Bonjour $pseudo, un nouveau tournoi Open Arena Rouen vient d'être créé : $nom_tournoi.";
+        $mail->Body = contenuMailTournoi($pseudo, $nom_tournoi);
+        $mail->AltBody = "Bonjour $pseudo, un nouveau tournoi vient d'être créé : $nom_tournoi.";
 
         $mail->send();
-
         return true;
 
     } catch (Exception $e) {
@@ -72,29 +72,26 @@ function envoyerMailOpenArena($destinataire, $pseudo, $nom_tournoi)
         $mail->Host = "127.0.0.1";
         $mail->SMTPAuth = true;
 
-        // Open Arena local admin mailbox
+        // Local Open Arena admin mailbox
         $mail->Username = "admin@open-arena-rouen.test";
         $mail->Password = "admin";
 
         $mail->SMTPSecure = false;
         $mail->Port = 25;
-        $mail->Timeout = 10;
 
-        // Sender
+        $mail->Timeout = 5;
+        $mail->SMTPKeepAlive = false;
+
         $mail->setFrom("admin@open-arena-rouen.test", "Open Arena Rouen");
-
-        // Receiver
         $mail->addAddress($destinataire, $pseudo);
 
-        // Email content
         $mail->isHTML(true);
         $mail->CharSet = "UTF-8";
         $mail->Subject = "Nouveau tournoi Open Arena Rouen";
-        $mail->Body = creerContenuMailTournoi($pseudo, $nom_tournoi);
-        $mail->AltBody = "Bonjour $pseudo, un nouveau tournoi Open Arena Rouen vient d'être créé : $nom_tournoi.";
+        $mail->Body = contenuMailTournoi($pseudo, $nom_tournoi);
+        $mail->AltBody = "Bonjour $pseudo, un nouveau tournoi vient d'être créé : $nom_tournoi.";
 
         $mail->send();
-
         return true;
 
     } catch (Exception $e) {

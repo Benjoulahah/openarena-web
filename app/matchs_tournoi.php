@@ -1,24 +1,25 @@
 <?php
-
+ 
+session_start();
 require_once __DIR__ . "/../config/database.php";
-
+ 
 $id_tournoi = isset($_GET["id_tournoi"]) ? intval($_GET["id_tournoi"]) : 0;
-
+ 
 if ($id_tournoi <= 0) {
     die("Tournoi invalide.");
 }
-
+ 
 $sql = "SELECT * FROM tournois WHERE id_tournoi = ?";
 $stmt = $pdo->prepare($sql);
 $stmt->execute(array($id_tournoi));
 $tournoi = $stmt->fetch(PDO::FETCH_ASSOC);
-
+ 
 if (!$tournoi) {
     die("Tournoi introuvable.");
 }
-
+ 
 $round_actuel = intval($tournoi["round_actuel"]);
-
+ 
 $sql = "
     SELECT 
         matchs.id_match,
@@ -44,7 +45,7 @@ $sql = "
 $stmt = $pdo->prepare($sql);
 $stmt->execute(array($id_tournoi, $round_actuel));
 $matchs = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+ 
 $sql = "
     SELECT COUNT(*)
     FROM matchs
@@ -56,9 +57,9 @@ $sql = "
 $stmt = $pdo->prepare($sql);
 $stmt->execute(array($id_tournoi, $round_actuel));
 $matchs_non_termines = $stmt->fetchColumn();
-
+ 
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -67,7 +68,7 @@ $matchs_non_termines = $stmt->fetchColumn();
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/styles.css">
 </head>
 <body>
-
+ 
 <header>
     <div class="left">
         <div class="logo">
@@ -75,73 +76,117 @@ $matchs_non_termines = $stmt->fetchColumn();
         </div>
         <div class="title">Open Arena</div>
     </div>
-
+ 
     <nav>
         <a href="<?= BASE_URL ?>/?page=admin">Admin</a>
         <a href="<?= BASE_URL ?>/?page=gestion_tournoi&id_tournoi=<?= $id_tournoi ?>">Retour tournoi</a>
     </nav>
 </header>
-
+ 
 <section class="section">
     <h2><?= htmlspecialchars($tournoi["nom_tournoi"]) ?> - Round <?= $round_actuel ?></h2>
-
+ 
+    <?php if (!empty($_SESSION['message_succes'])): ?>
+        <p style="text-align:center; color:green; font-weight:bold;">
+            <?= $_SESSION['message_succes'] ?>
+        </p>
+        <?php unset($_SESSION['message_succes']); ?>
+    <?php endif; ?>
+ 
+    <?php if (!empty($_SESSION['message_erreur'])): ?>
+        <div style="text-align:center; color:red; font-weight:bold; border:1px solid red; padding:12px; border-radius:6px; margin-bottom:16px;">
+            ⚠️ <?= $_SESSION['message_erreur'] ?>
+        </div>
+        <?php unset($_SESSION['message_erreur']); ?>
+    <?php endif; ?>
+ 
     <?php if (empty($matchs)): ?>
         <p style="text-align:center;">Aucun match pour ce round.</p>
     <?php else: ?>
-
-        <form action="<?= BASE_URL ?>/?page=traitement_scores_swiss" method="post">
+ 
+        
+        <form id="form-scores" action="<?= BASE_URL ?>/?page=traitement_scores_swiss" method="post">
             <input type="hidden" name="id_tournoi" value="<?= $id_tournoi ?>">
-
-            <div class="cards">
-                <?php foreach ($matchs as $match): ?>
-                    <div class="card">
-                        <h3>
-                            <?= htmlspecialchars($match["pseudo_1"]) ?>
-                            vs
-                            <?= htmlspecialchars($match["pseudo_2"]) ?>
-                        </h3>
-
-                        <input type="hidden" name="id_match[]" value="<?= $match["id_match"] ?>">
-
-                        <div class="form-group">
-                            <label><?= htmlspecialchars($match["pseudo_1"]) ?></label>
-                            <input 
-                                type="number" 
-                                name="score_1[]" 
-                                min="0"
-                                value="<?= htmlspecialchars($match["score_1"]) ?>"
-                                <?php if ($match["termine"] == 1) echo "readonly"; ?>
-                            >
-                        </div>
-
-                        <div class="form-group">
-                            <label><?= htmlspecialchars($match["pseudo_2"]) ?></label>
-                            <input 
-                                type="number" 
-                                name="score_2[]" 
-                                min="0"
-                                value="<?= htmlspecialchars($match["score_2"]) ?>"
-                                <?php if ($match["termine"] == 1) echo "readonly"; ?>
-                            >
-                        </div>
-
-                        <p>
-                            Statut :
-                            <?php if ($match["termine"] == 1): ?>
-                                Terminé
-                            <?php else: ?>
-                                En attente
-                            <?php endif; ?>
-                        </p>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-            <div style="text-align:center; margin-top:30px;">
-                <button type="submit" class="admin-btn start-btn">
-                    Enregistrer les scores
-                </button>
-            </div>
         </form>
+ 
+        <?php foreach ($matchs as $match):
+            $form_lancer_id = "form-lancer-" . $match["id_match"];
+        ?>
+ 
+        
+        <?php if ($match["termine"] == 0): ?>
+        <form id="<?= $form_lancer_id ?>"
+              action="<?= BASE_URL ?>/?page=traitement_lancement_match"
+              method="post">
+            <input type="hidden" name="pseudo_1"   value="<?= htmlspecialchars($match["pseudo_1"]) ?>">
+            <input type="hidden" name="pseudo_2"   value="<?= htmlspecialchars($match["pseudo_2"]) ?>">
+            <input type="hidden" name="id_tournoi" value="<?= $id_tournoi ?>">
+        </form>
+        <?php endif; ?>
+ 
+        <?php endforeach; ?>
+ 
+        <div class="cards">
+            <?php foreach ($matchs as $match):
+                $form_lancer_id = "form-lancer-" . $match["id_match"];
+            ?>
+                <div class="card">
+                    <h3>
+                        <?= htmlspecialchars($match["pseudo_1"]) ?>
+                        vs
+                        <?= htmlspecialchars($match["pseudo_2"]) ?>
+                    </h3>
+ 
+                    
+                    <input type="hidden" name="id_match[]" value="<?= $match["id_match"] ?>" form="form-scores">
+ 
+                    <div class="form-group">
+                        <label><?= htmlspecialchars($match["pseudo_1"]) ?></label>
+                        <input
+                            type="number"
+                            name="score_1[]"
+                            min="0"
+                            value="<?= htmlspecialchars($match["score_1"]) ?>"
+                            form="form-scores"
+                            <?php if ($match["termine"] == 1) echo "readonly"; ?>
+                        >
+                    </div>
+ 
+                    <div class="form-group">
+                        <label><?= htmlspecialchars($match["pseudo_2"]) ?></label>
+                        <input
+                            type="number"
+                            name="score_2[]"
+                            min="0"
+                            value="<?= htmlspecialchars($match["score_2"]) ?>"
+                            form="form-scores"
+                            <?php if ($match["termine"] == 1) echo "readonly"; ?>
+                        >
+                    </div>
+ 
+                    <p>
+                        Statut :
+                        <?php if ($match["termine"] == 1): ?>
+                            Terminé
+                        <?php else: ?>
+                            En attente
+                        <?php endif; ?>
+                    </p>
+ 
+                    <?php if ($match["termine"] == 0): ?>
+                    <button type="submit" form="<?= $form_lancer_id ?>" class="admin-btn stop-btn">
+                         Lancer ce match
+                    </button>
+                    <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
+        </div>
+ 
+        <div style="text-align:center; margin-top:30px;">
+            <button type="submit" form="form-scores" class="admin-btn start-btn">
+                Enregistrer les scores
+            </button>
+        </div>
         <?php if ($matchs_non_termines == 0): ?>
             <div style="text-align:center; margin-top:25px;">
                 <a href="<?= BASE_URL ?>/?page=creer_round_swiss&id_tournoi=<?= $id_tournoi ?>" class="admin-btn stop-btn">
@@ -149,14 +194,14 @@ $matchs_non_termines = $stmt->fetchColumn();
                 </a>
             </div>
         <?php endif; ?>
-
+ 
     <?php endif; ?>
-
+ 
 </section>
-
+ 
 <footer>
     <p>© 2026 Open Arena - Projet S8</p>
 </footer>
-
+ 
 </body>
 </html>

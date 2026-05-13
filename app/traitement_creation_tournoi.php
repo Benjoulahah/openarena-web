@@ -74,21 +74,22 @@ try {
 
     $joueurs_mails = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Send one notification email to each selected player
     foreach ($joueurs_mails as $joueur) {
+
+        if (!empty($joueur["email"])) {
+            envoyerMailPersonnel(
+                $joueur["email"],
+                $joueur["pseudo"],
+                $nom_tournoi
+            );
+        }
 
         if (
             $joueur["mail_open_arena_cree"] == 1 &&
             !empty($joueur["email_open_arena"])
         ) {
-            $destinataire = $joueur["email_open_arena"];
-        } else {
-            $destinataire = $joueur["email"];
-        }
-
-        if (!empty($destinataire)) {
-            envoyerMailTournoi(
-                $destinataire,
+            envoyerMailOpenArena(
+                $joueur["email_open_arena"],
                 $joueur["pseudo"],
                 $nom_tournoi
             );

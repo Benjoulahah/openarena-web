@@ -2,6 +2,7 @@
 
 require_once __DIR__ . "/../config/database.php";
 require_once __DIR__ . "/../config/ldap_auth.php";
+require_once __DIR__ . "/hmail_create_account.php";
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: " . BASE_URL . "/?page=inscription");
